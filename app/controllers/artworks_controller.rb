@@ -20,7 +20,7 @@ class ArtworksController < ApplicationController
   def destroy
     artwork = Artwork.find(params[:id])
     if @current_user == artwork.user_id
-      Artwork.find(params[:id]).destroy
+      artwork.destroy
       head :no_content
     else
       render json: artwork.errors, status: :unauthorized
