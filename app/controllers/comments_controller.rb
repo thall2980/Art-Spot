@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authorize, only: [:index, :show, :create]
+  skip_before_action :authorize, only: [:index, :show]
 
   # GET /comments
   def index
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
       comment.update!(comment_params)
       render json: comment
     else
-      render json: @comment.errors, status: :unauthorized
+      render json: comment.errors, status: :unauthorized
     end
   end
 

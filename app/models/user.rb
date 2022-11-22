@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-    has_many :comments
-    has_many :follows
+    has_many :artworks, dependent: :destroy
+    has_many :comments, dependent: :destroy
+    has_many :follows, dependent: :destroy
+    has_many :user_artwork_likes, dependent: :destroy
+    has_many :user_comment_likes, dependent: :destroy
 
     
   # Allows association to view list of users who follow a given user i.e. user.followers
@@ -10,4 +13,16 @@ class User < ApplicationRecord
   # Allows association to view list of users who follow a given user i.e. user.following
   has_many :following_relationships, foreign_key: :follower_id, class_name: 'Follow'
   has_many :following, through: :following_relationships, source: :following
+
+  validates_presence_of :username, :email, :first_name, :last_name, :profile_img
+  validates_uniqueness_of :username, :email
+  validates :password, presence: true, length: { minimum: 6, maximum: 16 }, allow_nil: true
+  validates :username, length: { minimum: 3, maximum: 16 }
+  validates :email, length: { minimum: 6, maximum: 25 }
+  validates :first_name, length: {maximum: 20}
+  validates :last_name, length: {maximum: 20}
+  validates :bio, length: {maximum: 500}
+
+  has_secure_password
+
 end

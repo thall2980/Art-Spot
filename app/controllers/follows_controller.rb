@@ -1,5 +1,5 @@
 class FollowsController < ApplicationController
-  before_action :set_follow, only: %i[ show update destroy ]
+  skip_before_action :authorize, only: [:index, :show]
 
   # GET /follows
   def index
@@ -13,7 +13,7 @@ class FollowsController < ApplicationController
 
   # POST /follows
   def create
-    render json: Follow.create!(artwork_params), status: :created
+    render json: Follow.create!(follow_params), status: :created
   end
 
   # DELETE /follows/1
@@ -31,6 +31,6 @@ class FollowsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def follow_params
-      params.permit(:follower, :following)
+      params.permit(:follower_id, :following_id)
     end
 end

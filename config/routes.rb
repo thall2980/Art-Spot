@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :user_artwork_likes
+  resources :user_comment_likes
   resources :follows
   resources :comments
   resources :artworks
@@ -10,6 +12,6 @@ Rails.application.routes.draw do
 
 
   post "/login", to: "sessions#create"
-  get "/me", to: "users#profile"
+  get "/auth", to: "users#profile"
   delete "/logout", to: "sessions#destroy"
 end
