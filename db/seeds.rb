@@ -16,13 +16,13 @@ u2 = User.create(username: "VanGoghMyEggo", password: "password", email: "vvgogh
 
 puts '🌙 Seeding artworks...'
 
-a1 = Artwork.create(user_id: u1.id, title: "The Persistence of Memory", style: "Surrealism", year: 1931, image: "https://www.dalipaintings.com/images/paintings/the-persistence-of-memory.jpg")
-a2 = Artwork.create(user_id: u1.id, title: "The Enigma of Desire", style: "Surrealism", year: 1929, image: "https://www.dalipaintings.com/images/paintings/the-enigma-of-my-desire.jpg")
-a3 = Artwork.create(user_id: u1.id, title: "The Face of War", style: "Surrealism", year: 1941, image: "https://www.dalipaintings.com/images/paintings/the-face-of-war.jpg")
-a4 = Artwork.create(user_id: u1.id, title: "The Anthropomorphic Cabinet", style: "Surrealism", year: 1936, image: "https://www.dalipaintings.com/images/paintings/the-anthropomorphic-cabinet.jpg")
-a5 = Artwork.create(user_id: u2.id, title: "The Starry Night", style: "Impressionism", year: 1889, image: "https://images.rawpixel.com/image_1300/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGR2YW5nb2doLXNudmdyb2IuanBn.jpg")
-a6 = Artwork.create(user_id: u2.id, title: "Self-Portrait with a Straw Hat", style: "Impressionism", year: 1887, image: "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGR2YW5nb2doLWR0MTUwMjUzLmpwZw.jpg")
-a7 = Artwork.create(user_id: u2.id, title: "At Eternity’s Gate", style: "Impressionism", year: 1890, image: "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGQyNDQtcGRmYW1vdXNwYWludGluZ2V0YzA2ODAxMy1pbWFnZV8zLmpwZw.jpg")
-a8 = Artwork.create(user_id: u2.id, title: "Vase with Three Sunflowers", style: "Impressionism", year: 1888, image: "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BkMjQ0LXBkZmFtb3VzcGFpbnRpbmcwNjgwMDctMi1pbWFnZV81LmpwZw.jpg")
+a1 = Artwork.create(user_id: u1.id, title: "The Persistence of Memory", style: "Surrealism", year: 1931, image: "https://www.dalipaintings.com/images/paintings/the-persistence-of-memory.jpg", likes: 0)
+a2 = Artwork.create(user_id: u1.id, title: "The Enigma of Desire", style: "Surrealism", year: 1929, image: "https://www.dalipaintings.com/images/paintings/the-enigma-of-my-desire.jpg", likes: 0)
+a3 = Artwork.create(user_id: u1.id, title: "The Face of War", style: "Surrealism", year: 1941, image: "https://www.dalipaintings.com/images/paintings/the-face-of-war.jpg", likes: 0)
+a4 = Artwork.create(user_id: u1.id, title: "The Anthropomorphic Cabinet", style: "Surrealism", year: 1936, image: "https://www.dalipaintings.com/images/paintings/the-anthropomorphic-cabinet.jpg", likes: 0)
+a5 = Artwork.create(user_id: u2.id, title: "The Starry Night", style: "Impressionism", year: 1889, image: "https://images.rawpixel.com/image_1300/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGR2YW5nb2doLXNudmdyb2IuanBn.jpg", likes: 0)
+a6 = Artwork.create(user_id: u2.id, title: "Self-Portrait with a Straw Hat", style: "Impressionism", year: 1887, image: "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGR2YW5nb2doLWR0MTUwMjUzLmpwZw.jpg", likes: 0)
+a7 = Artwork.create(user_id: u2.id, title: "At Eternity’s Gate", style: "Impressionism", year: 1890, image: "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGQyNDQtcGRmYW1vdXNwYWludGluZ2V0YzA2ODAxMy1pbWFnZV8zLmpwZw.jpg", likes: 0)
+a8 = Artwork.create(user_id: u2.id, title: "Vase with Three Sunflowers", style: "Impressionism", year: 1888, image: "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BkMjQ0LXBkZmFtb3VzcGFpbnRpbmcwNjgwMDctMi1pbWFnZV81LmpwZw.jpg" , likes: 0)
 
 puts '🌙 Done seeding!'

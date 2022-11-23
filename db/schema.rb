@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_151122) do
     t.string "style"
     t.integer "year"
     t.string "image"
+    t.integer "likes"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_151122) do
     t.bigint "artwork_id", null: false
     t.bigint "user_id", null: false
     t.text "text"
+    t.integer "likes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artwork_id"], name: "index_comments_on_artwork_id"
@@ -43,21 +45,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_151122) do
   end
 
   create_table "user_artwork_likes", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "artwork_id", null: false
+    t.integer "user_id"
+    t.integer "artwork_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artwork_id"], name: "index_user_artwork_likes_on_artwork_id"
-    t.index ["user_id"], name: "index_user_artwork_likes_on_user_id"
   end
 
   create_table "user_comment_likes", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "comment_id", null: false
+    t.integer "user_id"
+    t.integer "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_user_comment_likes_on_comment_id"
-    t.index ["user_id"], name: "index_user_comment_likes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,8 +73,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_151122) do
   add_foreign_key "artworks", "users"
   add_foreign_key "comments", "artworks"
   add_foreign_key "comments", "users"
-  add_foreign_key "user_artwork_likes", "artworks"
-  add_foreign_key "user_artwork_likes", "users"
-  add_foreign_key "user_comment_likes", "comments"
-  add_foreign_key "user_comment_likes", "users"
 end

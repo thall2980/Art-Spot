@@ -18,9 +18,6 @@ function App() {
 
   const history = useHistory();
 
-
-
-
   useEffect(() => {
     fetch("/artworks")
       .then((res) => res.json())
@@ -57,6 +54,19 @@ function App() {
     setUser("");
   }
 
+  function handleArtworkLike( newLike) {
+    console.log(newLike)
+    // setArtwork((current) => {
+    //   return {
+    //     ...current,
+    //     [user_artwork_likes]: {
+    //       ...current.user_artwork_likes,
+    //       newLike,
+    //     },
+    //   };
+    // });
+  }
+
   return (
     <>
       <header>
@@ -74,7 +84,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/profile">
-            <Profile user={user}/>
+            <Profile user={user} />
           </Route>
           <Route path="/login">
             <Login handleLogin={handleLogin} />
@@ -86,7 +96,11 @@ function App() {
             <ArtistContainer artists={artists} />
           </Route>
           <Route path="/artwork">
-            <ArtworkContainer artwork={artwork} user={user}/>
+            <ArtworkContainer
+              artwork={artwork}
+              user={user}
+              handleArtworkLike={handleArtworkLike}
+            />
           </Route>
         </Switch>
       </header>

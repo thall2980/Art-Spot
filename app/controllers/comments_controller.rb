@@ -41,6 +41,6 @@ class CommentsController < ApplicationController
   private
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.permit(:artwork_id, :user_id, :text)
+      params.permit(:artwork_id, :user_id, :text, :likes)
     end
 end

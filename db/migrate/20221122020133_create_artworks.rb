@@ -5,6 +5,7 @@ class CreateArtworks < ActiveRecord::Migration[7.0]
       t.string :style
       t.integer :year
       t.string :image
+      t.integer :likes
       t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps
