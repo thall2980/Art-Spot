@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: [:index, :show, :profile, :create]
+  skip_before_action :authorize, only: [:index, :show, :create, :profile]
 
   # GET /users
   def index
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: User.find(params[:id])
+    render json: User.find(params[:id]), status: :ok
   end
 
   # POST /users

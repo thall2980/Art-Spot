@@ -1,7 +1,8 @@
 class User < ApplicationRecord
     has_many :artworks, dependent: :destroy
     has_many :comments, dependent: :destroy
-    has_many :follows, dependent: :destroy
+    has_many :followers, dependent: :destroy
+    has_many :following, dependent: :destroy
     has_many :user_artwork_likes, dependent: :destroy
     has_many :user_comment_likes, dependent: :destroy
 

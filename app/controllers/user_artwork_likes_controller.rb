@@ -1,5 +1,5 @@
 class UserArtworkLikesController < ApplicationController
-  skip_before_action :authorize, only: [:index, :show]
+  skip_before_action :authorize, only: [:index, :show, :create, :profile]
 
   # GET /user_artwork_likes
   def index
