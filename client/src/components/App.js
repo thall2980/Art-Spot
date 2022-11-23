@@ -18,6 +18,9 @@ function App() {
 
   const history = useHistory();
 
+
+
+
   useEffect(() => {
     fetch("/artworks")
       .then((res) => res.json())
@@ -33,8 +36,8 @@ function App() {
   useEffect(() => {
     fetch(`/auth`).then((res) => {
       if (res.ok) {
-        res.json().then((user) => {
-          setUser(user);
+        res.json().then((data) => {
+          setUser(data);
         });
       } else {
         res.json().then((data) => setErrors(data.error));
@@ -57,7 +60,7 @@ function App() {
   return (
     <>
       <header>
-        <NavBar />
+        <NavBar user={user} />
         <div className="logout">
           {user ? user.first_name : null}{" "}
           {user ? (
@@ -83,7 +86,7 @@ function App() {
             <ArtistContainer artists={artists} />
           </Route>
           <Route path="/artwork">
-            <ArtworkContainer artwork={artwork}/>
+            <ArtworkContainer artwork={artwork} user={user}/>
           </Route>
         </Switch>
       </header>

@@ -1,13 +1,11 @@
 import React from 'react'
+import ArtworkCard from './ArtworkCard'
 
 const Profile = ({user}) => {
 
-  const userArt = user.artworks.map((artwork) => {
-    return <div>
-      <img src={artwork.image} alt={artwork.id}/>
-      <p>{artwork.title}</p>
-    </div>
-  })
+  // const userArt = user.artworks.map((artwork) => {
+  //   return <ArtworkCard key={artwork.id} artwork={artwork}/>
+  // })
 
   return (
     <>
@@ -23,7 +21,7 @@ const Profile = ({user}) => {
     <p>{user.bio}</p>
 
     <h2>Your Artwork</h2>
-    {userArt}
+    {/* {userArt} */}
     
     </>
   )
