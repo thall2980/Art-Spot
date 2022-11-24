@@ -21,7 +21,7 @@ class UserArtworkLikesController < ApplicationController
     userartworklike = UserArtworkLike.find(params[:id])
     if @current_user.id == userartworklike.user_id
       userartworklike.destroy
-      head :no_content
+      render json: userartworklike.artwork_id
     else
       render json: userartworklike.errors, status: :unauthorized
     end

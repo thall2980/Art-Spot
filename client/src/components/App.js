@@ -54,17 +54,44 @@ function App() {
     setUser("");
   }
 
-  function handleArtworkLike( newLike) {
-    console.log(newLike)
-    // setArtwork((current) => {
-    //   return {
-    //     ...current,
-    //     [user_artwork_likes]: {
-    //       ...current.user_artwork_likes,
-    //       newLike,
-    //     },
-    //   };
-    // });
+  function handleArtworkUnlike(newLike){
+    const addLikeArt = artwork.find((e) => e.id === newLike);
+    const newAddLikeArt = { ...addLikeArt, likes: (addLikeArt.likes -= 1) };
+    
+
+    fetch(`/artworks/${newLike}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ likes: newAddLikeArt.likes }),
+    })
+      .then((r) => r.json())
+      .then((updatedArt) => {
+        setArtwork((artwork) => {
+          return artwork.map((a) => {
+            return a.id === updatedArt.id ? updatedArt : a;
+          });
+        });
+      });
+  }
+
+  function handleArtworkLike(newLike) {
+    const addLikeArt = artwork.find((e) => e.id === newLike);
+    const newAddLikeArt = { ...addLikeArt, likes: (addLikeArt.likes += 1) };
+    
+
+    fetch(`/artworks/${newLike}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ likes: newAddLikeArt.likes }),
+    })
+      .then((r) => r.json())
+      .then((updatedArt) => {
+        setArtwork((artwork) => {
+          return artwork.map((a) => {
+            return a.id === updatedArt.id ? updatedArt : a;
+          });
+        });
+      });
   }
 
   return (
@@ -100,6 +127,7 @@ function App() {
               artwork={artwork}
               user={user}
               handleArtworkLike={handleArtworkLike}
+              handleArtworkUnlike={handleArtworkUnlike}
             />
           </Route>
         </Switch>

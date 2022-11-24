@@ -16,6 +16,16 @@ class ArtworksController < ApplicationController
     render json: Artwork.create!(artwork_params), status: :created
   end
 
+  def update
+    artwork = Artwork.find(params[:id])
+    # if @current_user.id == artwork.user_id
+      artwork.update!(artwork_params)
+      render json: artwork
+    # else
+    #   render json: artwork.errors, status: :unauthorized
+    # end
+  end
+
   # DELETE /artworks/1
   def destroy
     artwork = Artwork.find(params[:id])

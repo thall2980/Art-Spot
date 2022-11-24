@@ -1,7 +1,12 @@
 import React from "react";
 import { useState } from "react";
 
-const ArtworkCard = ({ artwork, user, handleArtworkLike }) => {
+const ArtworkCard = ({
+  artwork,
+  user,
+  handleArtworkLike,
+  handleArtworkUnlike,
+}) => {
   const [errors, setErrors] = useState([]);
   const [isDefaultButton, setIsDefaultButton] = useState(true);
   const [newLikeID, setNewLikeID] = useState(0);
@@ -9,6 +14,8 @@ const ArtworkCard = ({ artwork, user, handleArtworkLike }) => {
   const heartDisplayed = artwork.user_artwork_likes.find(
     (e) => e.user_id === user.id && e.artwork_id === artwork.id
   );
+
+  console.log(artwork);
 
   function handleLike() {
     const newLike = {
@@ -24,6 +31,7 @@ const ArtworkCard = ({ artwork, user, handleArtworkLike }) => {
       if (res.ok) {
         res.json().then((data) => {
           setNewLikeID(data.id);
+          handleArtworkLike(data.artwork_id);
           setIsDefaultButton((isDefaultButton) => !isDefaultButton);
         });
       } else {
@@ -33,10 +41,10 @@ const ArtworkCard = ({ artwork, user, handleArtworkLike }) => {
       }
     });
   }
-  
+
   const findID = artwork.user_artwork_likes.find(
     (e) => e.user_id === user.id && e.artwork_id === artwork.id
-  )?.id;
+  );
 
   function handleUnlike() {
     newLikeID
@@ -44,29 +52,37 @@ const ArtworkCard = ({ artwork, user, handleArtworkLike }) => {
           method: "DELETE",
         }).then((res) => {
           if (res.ok) {
-            setIsDefaultButton((isDefaultButton) => !isDefaultButton);
+            res.json().then((data) => {
+              handleArtworkUnlike(data);
+              setIsDefaultButton((isDefaultButton) => !isDefaultButton);
+            });
           }
         })
-      : fetch(`/user_artwork_likes/${findID}`, {
+      : fetch(`/user_artwork_likes/${findID?.id}`, {
           method: "DELETE",
         }).then((res) => {
           if (res.ok) {
-            setIsDefaultButton((isDefaultButton) => !isDefaultButton);
+            res.json().then((data) => {
+              handleArtworkUnlike(data);
+              setIsDefaultButton((isDefaultButton) => !isDefaultButton);
+            });
           }
         });
   }
 
-  function likeButtonLogic() {
-    if (heartDisplayed && isDefaultButton) {
-      return <button onClick={handleUnlike}>♥</button>;
-    } else if (heartDisplayed && !isDefaultButton) {
-      return <button onClick={handleLike}>♡</button>;
-    } else if (!heartDisplayed && isDefaultButton) {
-      return <button onClick={handleLike}>♡</button>;
-    } else if (!heartDisplayed && !isDefaultButton) {
-      return <button onClick={handleUnlike}>♥</button>;
-    }
-  }
+  // function likeButtonLogic() {
+  //   if (heartDisplayed && isDefaultButton) {
+  //     return <button onClick={handleUnlike}>♥</button>;
+  //   } else if (heartDisplayed && !isDefaultButton) {
+  //     return <button onClick={handleLike}>♡</button>;
+  //   } else if (!heartDisplayed && isDefaultButton) {
+  //     return <button onClick={handleLike}>♡</button>;
+  //   } else if (!heartDisplayed && !isDefaultButton) {
+  //     return <button onClick={handleUnlike}>♥</button>;
+  //   }
+  // }
+
+  console.log(artwork.likes);
 
   return (
     <>
@@ -77,7 +93,11 @@ const ArtworkCard = ({ artwork, user, handleArtworkLike }) => {
       <p>{artwork.style}</p>
       <div>
         <p>{artwork.user_artwork_likes.length} Likes</p>
-        {likeButtonLogic()}
+        {heartDisplayed ? (
+          <button onClick={handleUnlike}>♥</button>
+        ) : (
+          <button onClick={handleLike}>♡</button>
+        )}
       </div>
     </>
   );
