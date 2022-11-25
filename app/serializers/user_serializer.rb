@@ -3,4 +3,6 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :artworks
   has_many :user_artwork_likes
+  has_many :following
+  has_many :followers
 end

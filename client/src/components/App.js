@@ -10,12 +10,14 @@ import Profile from "./Profile";
 import ArtistContainer from "./ArtistContainer";
 import ArtworkContainer from "./ArtworkContainer";
 import ArtworkWithComments from "./ArtworkWithComments";
+import ArtistProfile from "./ArtistProfile";
 
 function App() {
   const [artwork, setArtwork] = useState([]);
   const [artists, setArtists] = useState([]);
   const [user, setUser] = useState("");
   const [comments, setComments] = useState([]);
+  const [follows, setFollows] = useState([])
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
@@ -36,6 +38,12 @@ function App() {
     fetch("/comments")
       .then((res) => res.json())
       .then(setComments);
+  }, []);
+
+  useEffect(() => {
+    fetch("/follows")
+      .then((res) => res.json())
+      .then(setFollows);
   }, []);
 
   useEffect(() => {
@@ -159,6 +167,16 @@ function App() {
       });
   }
 
+  function handleFollow(newFollow) {
+    setFollows([...follows, newFollow])
+  }
+
+  function handleUnfollow(id) {
+    console.log(id)
+    setFollows((follows) => follows.filter((follow) => follow.id !== id))
+  }
+
+
   return (
     <>
       <header>
@@ -184,7 +202,7 @@ function App() {
           <Route path="/signup">
             <Signup handleLogin={handleLogin} />
           </Route>
-          <Route path="/artists">
+          <Route exact path="/artists">
             <ArtistContainer artists={artists} />
           </Route>
           <Route exact path="/artwork">
@@ -208,6 +226,9 @@ function App() {
               handleCommentLike={handleCommentLike}
               handleCommentUnlike={handleCommentUnlike}
             />
+          </Route>
+          <Route path ="/artists/:id">
+            <ArtistProfile artists={artists} user={user} follows={follows} handleFollow={handleFollow} handleUnfollow={handleUnfollow}/>
           </Route>
         </Switch>
       </header>
