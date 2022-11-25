@@ -21,7 +21,7 @@ class UserCommentLikesController < ApplicationController
     usercommentlike = UserCommentLike.find(params[:id])
     if @current_user.id == usercommentlike.user_id
       usercommentlike.destroy
-      head :no_content
+      render json: usercommentlike.comment_id
     else
       render json: usercommentlike.errors, status: :unauthorized
     end

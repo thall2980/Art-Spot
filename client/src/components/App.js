@@ -9,11 +9,13 @@ import Signup from "./Signup";
 import Profile from "./Profile";
 import ArtistContainer from "./ArtistContainer";
 import ArtworkContainer from "./ArtworkContainer";
+import ArtworkWithComments from "./ArtworkWithComments";
 
 function App() {
   const [artwork, setArtwork] = useState([]);
   const [artists, setArtists] = useState([]);
   const [user, setUser] = useState("");
+  const [comments, setComments] = useState([]);
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
@@ -28,6 +30,12 @@ function App() {
     fetch("/users")
       .then((res) => res.json())
       .then(setArtists);
+  }, []);
+
+  useEffect(() => {
+    fetch("/comments")
+      .then((res) => res.json())
+      .then(setComments);
   }, []);
 
   useEffect(() => {
@@ -54,10 +62,24 @@ function App() {
     setUser("");
   }
 
-  function handleArtworkUnlike(newLike){
+  function handleAddComment(newComment) {
+    setComments([...comments, newComment]);
+  }
+  function onDeleteComment(id) {
+    setComments((comments) => comments.filter((comment) => comment.id !== id));
+  }
+
+  function handleUpdateComment(updatedComment) {
+    setComments((comment) => {
+      return comments.map((c) => {
+        return c.id === updatedComment.id ? updatedComment : c;
+      });
+    });
+  }
+
+  function handleArtworkUnlike(newLike) {
     const addLikeArt = artwork.find((e) => e.id === newLike);
     const newAddLikeArt = { ...addLikeArt, likes: (addLikeArt.likes -= 1) };
-    
 
     fetch(`/artworks/${newLike}`, {
       method: "PATCH",
@@ -77,7 +99,6 @@ function App() {
   function handleArtworkLike(newLike) {
     const addLikeArt = artwork.find((e) => e.id === newLike);
     const newAddLikeArt = { ...addLikeArt, likes: (addLikeArt.likes += 1) };
-    
 
     fetch(`/artworks/${newLike}`, {
       method: "PATCH",
@@ -89,6 +110,50 @@ function App() {
         setArtwork((artwork) => {
           return artwork.map((a) => {
             return a.id === updatedArt.id ? updatedArt : a;
+          });
+        });
+      });
+  }
+
+  function handleCommentLike(newLikeID) {
+    const addLikeComment = comments.find((e) => e.id === newLikeID);
+    const newAddLikeComment = {
+      ...addLikeComment,
+      likes: (addLikeComment.likes += 1),
+    };
+
+    fetch(`/comments/${newLikeID}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ likes: newAddLikeComment.likes }),
+    })
+      .then((r) => r.json())
+      .then((updatedComment) => {
+        setComments((comment) => {
+          return comment.map((c) => {
+            return c.id === updatedComment.id ? updatedComment : c;
+          });
+        });
+      });
+  }
+
+  function handleCommentUnlike(newUnlikeID) {
+    const addUnlikeComment = comments.find((e) => e.id === newUnlikeID);
+    const newAddUnlikeComment = {
+      ...addUnlikeComment,
+      likes: (addUnlikeComment.likes -= 1),
+    };
+
+    fetch(`/comments/${newUnlikeID}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ likes: newAddUnlikeComment.likes }),
+    })
+      .then((r) => r.json())
+      .then((updatedComment) => {
+        setComments((comment) => {
+          return comment.map((c) => {
+            return c.id === updatedComment.id ? updatedComment : c;
           });
         });
       });
@@ -122,12 +187,26 @@ function App() {
           <Route path="/artists">
             <ArtistContainer artists={artists} />
           </Route>
-          <Route path="/artwork">
+          <Route exact path="/artwork">
             <ArtworkContainer
               artwork={artwork}
               user={user}
               handleArtworkLike={handleArtworkLike}
               handleArtworkUnlike={handleArtworkUnlike}
+            />
+          </Route>
+          <Route path="/artwork/:id">
+            <ArtworkWithComments
+              artwork={artwork}
+              user={user}
+              comments={comments}
+              handleArtworkLike={handleArtworkLike}
+              handleArtworkUnlike={handleArtworkUnlike}
+              handleAddComment={handleAddComment}
+              onDeleteComment={onDeleteComment}
+              handleUpdateComment={handleUpdateComment}
+              handleCommentLike={handleCommentLike}
+              handleCommentUnlike={handleCommentUnlike}
             />
           </Route>
         </Switch>

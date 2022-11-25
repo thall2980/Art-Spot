@@ -19,12 +19,12 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   def update
     comment = Comment.find(params[:id])
-    if @current_user.id == comment.user_id
+    # if @current_user.id == comment.user_id
       comment.update!(comment_params)
       render json: comment
-    else
-      render json: comment.errors, status: :unauthorized
-    end
+    # else
+    #   render json: comment.errors, status: :unauthorized
+    # end
   end
 
   # DELETE /comments/1
