@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const CommentCard = ({
@@ -100,12 +101,12 @@ const CommentCard = ({
         </>
       ) : (
         <div>
-          <h4>{comment.user.username}</h4>
+          <h4>
+            <Link to={`/artists/${comment.user.id}`}>
+              {comment.user.username}
+            </Link>
+          </h4>
           <p>{comment.text}</p>
-          <p>
-            {comment.user_comment_likes.length}{" "}
-            {comment.user_comment_likes.length === 1 ? "Like" : "Likes"}
-          </p>
           {user.id === comment.user.id ? (
             <button onClick={handleDeleteClick}>X</button>
           ) : null}
@@ -114,6 +115,11 @@ const CommentCard = ({
               Edit
             </button>
           ) : null}
+
+          <p>
+            {comment.user_comment_likes.length}{" "}
+            {comment.user_comment_likes.length === 1 ? "Like" : "Likes"}{" "}
+          </p>
           {findID ? (
             <button onClick={handleUnlike}>♥</button>
           ) : (

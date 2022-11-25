@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const ArtistProfile = ({ artists, user, follows, handleFollow, handleUnfollow }) => {
+const ArtistProfile = ({
+  artists,
+  user,
+  follows,
+  handleFollow,
+  handleUnfollow,
+}) => {
   const [errors, setErrors] = useState([]);
   const { id } = useParams();
   const artist = artists.filter((e) => String(e.id) === id)[0];
@@ -24,8 +30,6 @@ const ArtistProfile = ({ artists, user, follows, handleFollow, handleUnfollow })
       follow.follower_id === user?.id && follow.following_id === artist?.id
     );
   });
-
-  console.log(userFollowing);
 
   function handleFollowClick() {
     const newFollow = {
@@ -65,10 +69,14 @@ const ArtistProfile = ({ artists, user, follows, handleFollow, handleUnfollow })
         <h1>{artist?.username}</h1>
         <img src={artist?.profile_img} alt="profile" />
       </div>
-      {userFollowing?.length ? (
-        <button onClick={handleUnfollowClick}>Unfollow</button>
-      ) : (
-        <button onClick={handleFollowClick}>Follow</button>
+      {user.id === artist?.id ? null : (
+        <>
+          {userFollowing?.length ? (
+            <button onClick={handleUnfollowClick}>Unfollow</button>
+          ) : (
+            <button onClick={handleFollowClick}>Follow</button>
+          )}
+        </>
       )}
 
       <h2>Info</h2>

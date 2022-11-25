@@ -10,7 +10,7 @@ const CommentContainer = ({
   onDeleteComment,
   handleUpdateComment,
   handleCommentLike,
-  handleCommentUnlike
+  handleCommentUnlike,
 }) => {
   const filteredComments = comments.filter(
     (comment) => comment.artwork_id === art?.id
@@ -30,9 +30,16 @@ const CommentContainer = ({
   return (
     <>
       {commentCard}
-      <CommentForm user={user} art={art} handleAddComment={handleAddComment} />
+      {user ? (
+        <CommentForm
+          user={user}
+          art={art}
+          handleAddComment={handleAddComment}
+        />
+      ) : null}
     </>
   );
 };
 
 export default CommentContainer;
+

@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import CommentContainer from "./CommentContainer";
 
 const ArtworkWithComments = ({
@@ -64,7 +65,7 @@ const ArtworkWithComments = ({
     <div>
       <div>
         <h1>
-          {art?.title} - {art?.user.username}
+          {art?.title} - <Link to={`/artists/${art?.user?.id}`}>{art?.user.username}</Link>
         </h1>
         <img src={art?.image} alt={art?.title} />
       </div>

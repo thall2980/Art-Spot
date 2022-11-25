@@ -17,7 +17,7 @@ function App() {
   const [artists, setArtists] = useState([]);
   const [user, setUser] = useState("");
   const [comments, setComments] = useState([]);
-  const [follows, setFollows] = useState([])
+  const [follows, setFollows] = useState([]);
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
@@ -68,6 +68,10 @@ function App() {
     });
     history.push(`/`);
     setUser("");
+  }
+
+  function handleAddUser(newUser) {
+    setArtists([...artists, newUser]);
   }
 
   function handleAddComment(newComment) {
@@ -168,14 +172,20 @@ function App() {
   }
 
   function handleFollow(newFollow) {
-    setFollows([...follows, newFollow])
+    setFollows([...follows, newFollow]);
   }
 
   function handleUnfollow(id) {
-    console.log(id)
-    setFollows((follows) => follows.filter((follow) => follow.id !== id))
+    setFollows((follows) => follows.filter((follow) => follow.id !== id));
   }
 
+  function handleAddArt(newArt) {
+    setArtwork([...artwork, newArt]);
+  }
+
+  function handleDeleteArt(id) {
+    setArtwork((artwork) => artwork.filter((art) => art.id !== id));
+  }
 
   return (
     <>
@@ -194,13 +204,19 @@ function App() {
             <Home />
           </Route>
           <Route path="/profile">
-            <Profile user={user} />
+            <Profile
+              user={user}
+              artwork={artwork}
+              handleAddArt={handleAddArt}
+              handleDeleteArt={handleDeleteArt}
+              follows={follows}
+            />
           </Route>
           <Route path="/login">
             <Login handleLogin={handleLogin} />
           </Route>
           <Route path="/signup">
-            <Signup handleLogin={handleLogin} />
+            <Signup handleLogin={handleLogin} handleAddUser={handleAddUser} />
           </Route>
           <Route exact path="/artists">
             <ArtistContainer artists={artists} />
@@ -227,8 +243,14 @@ function App() {
               handleCommentUnlike={handleCommentUnlike}
             />
           </Route>
-          <Route path ="/artists/:id">
-            <ArtistProfile artists={artists} user={user} follows={follows} handleFollow={handleFollow} handleUnfollow={handleUnfollow}/>
+          <Route path="/artists/:id">
+            <ArtistProfile
+              artists={artists}
+              user={user}
+              follows={follows}
+              handleFollow={handleFollow}
+              handleUnfollow={handleUnfollow}
+            />
           </Route>
         </Switch>
       </header>

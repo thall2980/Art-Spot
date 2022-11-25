@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const Signup = ({ handleLogin }) => {
+const Signup = ({ handleLogin, handleAddUser }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +33,7 @@ const Signup = ({ handleLogin }) => {
       if (res.ok) {
         res.json().then((user) => {
           handleLogin(user)
+          handleAddUser(user)
           history.push(`/profile`);
         });
       } else {
@@ -111,7 +112,7 @@ const Signup = ({ handleLogin }) => {
         </div>
         <button type="submit">Create Account</button>
       </form>
-      {errors ? errors.map((e) => <div>{e[1]}</div>) : null}
+      {errors ? errors.map((e) => <div key={e}>{e[1]}</div>) : null}
     </>
   );
 };

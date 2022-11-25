@@ -29,7 +29,7 @@ class ArtworksController < ApplicationController
   # DELETE /artworks/1
   def destroy
     artwork = Artwork.find(params[:id])
-    if @current_user == artwork.user_id
+    if @current_user.id == artwork.user_id
       artwork.destroy
       head :no_content
     else
@@ -39,6 +39,6 @@ class ArtworksController < ApplicationController
 
   private
     def artwork_params
-      params.permit(:title, :style, :year, :user_id, :likes)
+      params.permit(:title, :style, :image, :year, :user_id, :likes)
     end
 end
