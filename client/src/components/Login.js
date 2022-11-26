@@ -57,6 +57,7 @@ const Login = ({ handleLogin }) => {
             value={password}
             label="Password"
             type="password"
+            autoComplete="on"
             onChange={(e) => setPassword(e.target.value)}
           ></input>
           <br></br>

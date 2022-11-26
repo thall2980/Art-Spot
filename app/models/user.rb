@@ -16,8 +16,10 @@ class User < ApplicationRecord
   has_many :following, through: :following_relationships, source: :following
 
   validates_presence_of :username, :email, :first_name, :last_name, :profile_img
-  validates_uniqueness_of :username, :email
-  validates :password, presence: true, length: { minimum: 6, maximum: 16 }, allow_nil: true
+  validates_uniqueness_of :username, :email, on: :create
+  # validates :email, uniqueness: true, on: :create
+  # validates :username, uniqueness: true, on: :create
+  validates :password, presence: true, length: { minimum: 6, maximum: 16 }, if: :password_digest_changed?
   validates :username, length: { minimum: 3, maximum: 16 }
   validates :email, length: { minimum: 6, maximum: 25 }
   validates :first_name, length: {maximum: 20}

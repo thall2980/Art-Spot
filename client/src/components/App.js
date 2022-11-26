@@ -62,6 +62,10 @@ function App() {
     setUser(addUser);
   }
 
+  function handleUpdateUser(update) {
+    setUser(update)
+  }
+
   function logOut() {
     fetch("/logout", {
       method: "DELETE",
@@ -207,9 +211,11 @@ function App() {
             <Profile
               user={user}
               artwork={artwork}
+              follows={follows}
+              setUser={setUser}
               handleAddArt={handleAddArt}
               handleDeleteArt={handleDeleteArt}
-              follows={follows}
+              handleUpdateUser={handleUpdateUser}
             />
           </Route>
           <Route path="/login">
