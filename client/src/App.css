@@ -1,3 +1,113 @@
 .App {
-    text-align: center;
+  text-align: center;
+}
+
+.artist-container{
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.artwork-card-img {
+  min-height: 25rem;
+  max-height: 25rem;
+  max-width: 30rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.artwork-card {
+  margin: 1%;
+  width: 30rem;
+  border: 2px inset black;
+}
+
+.artwork-card2 {
+  margin: 1%;
+  width: 30rem;
+  border: transparent;
+}
+
+.deleteBtnContainer {
+  text-align: center;
+}
+
+.artwork-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.artwork-card-text {
+  justify-content: center;
+}
+
+.artistTitle {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.artistName {
+  text-align: center;
+}
+
+.artworkTitle {
+  font-size: 1.5rem;
+}
+
+.like-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.5rem
+}
+
+.likeButton {
+  background: transparent;
+  outline: transparent;
+  border: none;
+  height: 5rem;
+  width: 5rem;
+  font-size: 2rem
+}
+
+.yourArtContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* button 54 */
+.button-54 {
+  width: 25rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 13px;
+  /* padding: 0.25em 0.5em; */
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-54:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
   }
+}

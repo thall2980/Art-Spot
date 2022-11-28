@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 
 const EditInfoForm = ({ user, handleUpdateUser, handleStopEdit }) => {
   const [username, setUsername] = useState(user.username);

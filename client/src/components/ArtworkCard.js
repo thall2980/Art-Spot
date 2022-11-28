@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Card from "react-bootstrap/Card";
 
 const ArtworkCard = ({
   artwork,
@@ -47,26 +48,37 @@ const ArtworkCard = ({
   }
 
   return (
-    <>
+    <Card style={{ width: "30rem" }} className="artwork-card">
       <Link to={`/artwork/${artwork.id}`}>
-        <img src={artwork.image} alt={artwork.title} />
+        <Card.Img
+          src={artwork.image}
+          alt={artwork.title}
+          className="artwork-card-img"
+        />
       </Link>
-      <h1>
-        {artwork.title} ({artwork.year})
-      </h1>
-      <p>{artwork.style}</p>
-      <div>
-        <p>
+      <div className="like-info">
+        <Card.Title className="artworkTitle" style ={{margin: "1rem"}}>
+          {artwork.title} ({artwork.year})
+        </Card.Title>
+        <Card.Text className="artork-card-text" style ={{margin: "1rem"}}>{artwork.style}</Card.Text>
+      </div>
+      <div className="like-info">
+        <Card.Text className="artork-card-text" style ={{margin: "1rem"}}>
           {artwork.user_artwork_likes.length}{" "}
-          {artwork.user_artwork_likes.length === 1 ? "Like" : "Likes"}
-        </p>
+          {artwork.user_artwork_likes.length === 1 ? "Like " : "Likes "}
+          <br />
+        </Card.Text>
         {findID ? (
-          <button onClick={handleUnlike}>♥</button>
+          <button className="likeButton" onClick={handleUnlike}>
+            ❤️
+          </button>
         ) : (
-          <button onClick={handleLike}>♡</button>
+          <button className="likeButton" onClick={handleLike}>
+            🤍
+          </button>
         )}
       </div>
-    </>
+    </Card>
   );
 };
 

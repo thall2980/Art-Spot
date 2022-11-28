@@ -1,5 +1,6 @@
 import React from "react";
 import ArtworkCard from "./ArtworkCard";
+import { Container, Row, Col } from "react-bootstrap";
 
 const ArtworkContainer = ({
   artwork,
@@ -18,7 +19,7 @@ const ArtworkContainer = ({
       />
     );
   });
-  return <div>{artworkCard}</div>;
+  return <div className="artwork-container">{artworkCard}</div>;
 };
 
 export default ArtworkContainer;

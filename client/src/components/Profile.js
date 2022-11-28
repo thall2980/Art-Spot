@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import Card from "react-bootstrap/Card"
 import { useHistory } from "react-router-dom";
 import AddArtworkForm from "./AddArtworkForm";
 import EditInfoForm from "./EditInfoForm";
@@ -21,13 +22,14 @@ const Profile = ({
   const userArt2 = artwork.filter((art) => art.user.id === user.id);
   const userArt = userArt2.map((artwork) => {
     return (
-      <div key={artwork.id}>
+      <Card className="artwork-card2" key={artwork.id}>
         <Link to={`/artwork/${artwork.id}`}>
-          <img src={artwork.image} alt={artwork.title} />
+          <Card.Img className="artwork-card-img" src={artwork.image} alt={artwork.title} />
         </Link>
-        <p>{artwork.title}</p>
-        <button onClick={() => handleDeleteClick(artwork.id)}>X</button>
-      </div>
+        <h4 className="artistName">{artwork.title}</h4>
+        <div className="deleteBtnContainer">
+        <button className="button-54" onClick={() => handleDeleteClick(artwork.id)}>Delete</button></div>
+      </Card>
     );
   });
 
@@ -37,7 +39,7 @@ const Profile = ({
     return (
       <div key={follow.id}>
         <Link to={`/artists/${follow.following_id}`}>
-          <img
+          <img 
             src={follow.following.profile_img}
             alt={follow.following.username}
           />
@@ -125,10 +127,10 @@ const Profile = ({
       <AddArtworkForm user={user} handleAddArt={handleAddArt} />
 
       <h2>Followed Artists</h2>
-      {displayUserFollowing}
+      <div className="yourArtContainer">{displayUserFollowing}</div>
 
-      <h2>Your Artwork</h2>
-      {userArt}
+      <h2 >Your Artwork</h2>
+      <div className="yourArtContainer">{userArt}</div>
     </>
   );
 };

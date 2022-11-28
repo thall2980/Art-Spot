@@ -20,8 +20,8 @@ class User < ApplicationRecord
   # validates :email, uniqueness: true, on: :create
   # validates :username, uniqueness: true, on: :create
   validates :password, presence: true, length: { minimum: 6, maximum: 16 }, if: :password_digest_changed?
-  validates :username, length: { minimum: 3, maximum: 16 }
-  validates :email, length: { minimum: 6, maximum: 25 }
+  validates :username, length: { minimum: 3, maximum: 24 }
+  validates :email, length: { minimum: 6, maximum: 32 }
   validates :first_name, length: {maximum: 20}
   validates :last_name, length: {maximum: 20}
   validates :bio, length: {maximum: 500}
