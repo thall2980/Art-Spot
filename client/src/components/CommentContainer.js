@@ -28,16 +28,16 @@ const CommentContainer = ({
   ));
 
   return (
-    <>
+    <div>
       {commentCard}
       {user ? (
-        <CommentForm
+        <CommentForm className="commentForm"
           user={user}
           art={art}
           handleAddComment={handleAddComment}
         />
       ) : null}
-    </>
+    </div>
   );
 };
 

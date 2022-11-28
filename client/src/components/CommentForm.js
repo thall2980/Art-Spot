@@ -33,7 +33,7 @@ const CommentForm = ({ user, art, handleAddComment }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <textarea
+        <textarea className="commentField"
           type="text"
           placeholder="Comment..."
           value={comment}

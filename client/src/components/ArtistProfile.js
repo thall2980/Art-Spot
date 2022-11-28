@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -12,16 +16,19 @@ const ArtistProfile = ({
 }) => {
   const [errors, setErrors] = useState([]);
   const { id } = useParams();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const artist = artists.filter((e) => String(e.id) === id)[0];
 
   const userArt = artist?.artworks?.map((artwork) => {
     return (
-      <div key={artwork.id}>
+      <Card className="artwork-card" key={artwork.id}>
         <Link to={`/artwork/${artwork.id}`}>
-          <img src={artwork.image} alt={artwork.title} />
+          <Card.Img className="artwork-card-img" src={artwork.image} alt={artwork.title} />
         </Link>
-        <p>{artwork.title}</p>
-      </div>
+        <Card.Title className="artistName">{artwork.title}</Card.Title>
+      </Card>
     );
   });
 
@@ -36,6 +43,7 @@ const ArtistProfile = ({
       follower_id: user.id,
       following_id: artist?.id,
     };
+    if (!user) handleShow()
     fetch("/follows", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -88,7 +96,26 @@ const ArtistProfile = ({
       <p>{artist?.bio}</p>
 
       <h2>{artist?.username}'s Artwork</h2>
-      {userArt}
+      <div className="yourArtContainer">{userArt}</div>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Looks like you're not logged in!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Please login or create an account to engage with the community.</Modal.Body>
+        <Modal.Footer>
+          <NavLink to="/login">
+            <Button variant="secondary" onClick={handleClose}>
+              Login
+            </Button>
+          </NavLink>
+          <NavLink to="/signup">
+            <Button variant="primary" onClick={handleClose}>
+              Create account
+            </Button>
+          </NavLink>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

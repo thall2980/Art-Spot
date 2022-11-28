@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 
 const ArtistCard = ({artist}) => {
   return (
-    <Card className="artwork-card">
+    <Card className="artist-card">
         <h1 className="artistTitle">{artist.username}</h1>
         <Link to={`/artists/${artist.id}`}>
         <Card.Img src={artist.profile_img} alt={artist.username} className="artwork-card-img" />
