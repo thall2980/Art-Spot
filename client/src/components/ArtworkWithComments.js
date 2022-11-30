@@ -72,7 +72,7 @@ const ArtworkWithComments = ({
     <Container>
       <div className="singlePageImgContainer">
         <h1 className="artistName">
-          {art?.title} - <Link style={{ textDecoration: 'none' }} to={`/artists/${art?.user?.id}`}>{art?.user.username}</Link>
+          {art?.title} - <Link className="nameLink" style={{ textDecoration: 'none' }} to={`/artists/${art?.user?.id}`}>{art?.user.username}</Link>
         </h1>
         <img className="singleImagePage" src={art?.image} alt={art?.title} />
       </div>
@@ -82,11 +82,11 @@ const ArtworkWithComments = ({
           {art?.user_artwork_likes.length === 1 ? "Like" : "Likes"}
         </h3>
         {heartDisplayed ? (
-          <button className="likeButton" onClick={handleUnlike}>
+          <button className="likeButton2" onClick={handleUnlike}>
           ❤️
         </button>
       ) : (
-        <button className="likeButton" onClick={handleLike}>
+        <button className="likeButton2" onClick={handleLike}>
           🤍
         </button>
       )}

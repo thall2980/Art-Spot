@@ -66,14 +66,6 @@ function App() {
     setUser(update)
   }
 
-  function logOut() {
-    fetch("/logout", {
-      method: "DELETE",
-    });
-    history.push(`/`);
-    setUser("");
-  }
-
   function handleAddUser(newUser) {
     setArtists([...artists, newUser]);
   }
@@ -194,15 +186,7 @@ function App() {
   return (
     <>
       <header>
-        <NavBar user={user} />
-        <div className="logout">
-          {user ? user.first_name : null}{" "}
-          {user ? (
-            <button onClick={logOut}>
-              Log Out
-            </button>
-          ) : null}
-        </div>
+        <NavBar user={user} setUser={setUser} />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -212,7 +196,6 @@ function App() {
               user={user}
               artwork={artwork}
               follows={follows}
-              setUser={setUser}
               handleAddArt={handleAddArt}
               handleDeleteArt={handleDeleteArt}
               handleUpdateUser={handleUpdateUser}

@@ -2,11 +2,20 @@
   text-align: center;
 }
 
-.artist-container{
+.artist-container {
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  background-color: rgb(146, 175, 128);
+}
+
+
+
+
+.artist-container2{
+  background-image: url('https://images.unsplash.com/photo-1590157867535-b8435e08a93f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=784&q=80');
+  
 }
 
 .artwork-card-img {
@@ -67,7 +76,7 @@
   flex-direction: row;
   justify-content: space-between;
   text-align: center;
-  font-size: 1.5rem
+  font-size: 1.5rem;
 }
 
 .like-info2 {
@@ -76,6 +85,8 @@
   justify-content: space-between;
   text-align: center;
   font-size: 1.5rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
   /* border: 1px solid */
 }
 
@@ -85,7 +96,16 @@
   border: none;
   height: 5rem;
   width: 5rem;
-  font-size: 2rem
+  font-size: 2rem;
+}
+
+.likeButton2 {
+  background: transparent;
+  outline: transparent;
+  border: none;
+  height: 5rem;
+  width: 5rem;
+  font-size: 2rem;
 }
 
 .commentLikeButton {
@@ -96,6 +116,7 @@
   width: 2.5rem;
   font-size: 1rem;
   padding-top: 1rem;
+
 }
 
 .yourArtContainer {
@@ -136,26 +157,33 @@
   }
 }
 
-.singlePageImgContainer{
+.singlePageImgContainer {
   display: flex;
   flex-direction: column;
-  }
+}
 
 .singleImagePage {
   text-align: center;
   max-height: 60rem;
 }
 
+.commentsContainer {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
 .singleCommentDiv {
   display: flex;
-  border: 3px solid black;
-  border-bottom: none;
+  background-color: rgb(134, 160, 116);
+  border-radius: 5px;
+  margin-bottom: 1rem;
 }
 
 .nameCommentDiv {
   display: flex;
   flex-direction: column;
   width: 95%;
+  border-radius: 5px;
 }
 
 .commentText {
@@ -163,7 +191,11 @@
   padding-left: 4rem;
 }
 
-.editDeleteDiv{
+.editDeleteBtn {
+  border-radius: 5px;
+}
+
+.editDeleteDiv {
   display: flex;
   justify-content: right;
   padding-bottom: 1rem;
@@ -178,15 +210,26 @@
   justify-content: right;
 }
 
-.commentPic {
-  border-radius: 50%;
-  height: 3rem;
-  width: 3rem;
+.commentPicDiv {
+  width: 9%;
+  justify-content: center;
 }
 
-.commentName{
-  padding-top: .5rem;
-  padding-left: .5rem;
+.commentPic {
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+  margin-top:20%;
+  margin-left: 20%;
+}
+
+.nameLink{
+  color: black;
+}
+
+.commentName {
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 .commentLikes {
@@ -201,5 +244,102 @@
 
 .commentField {
   width: 100%;
-  border: 3px solid black;
+  min-height: 5rem;
+  
+}
+
+.navbar {
+  height: 5rem;
+  display: flex;
+  justify-content: right;
+}
+
+.underline-style {
+  color: #ced4da;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+}
+
+.underline-style::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: block;
+  background: none repeat scroll 0 0 transparent;
+  height: 2px;
+  width: 0;
+  background: #ced4da;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.underline-style:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.navigation {
+  width: 10%;
+  background-color: rgb(88, 119, 67);
+  height: 100%;
+}
+
+.logoutPic {
+  width: 3.5rem;
+  height: 100%;
+  border-radius: 100px;
+  float: left;
+}
+
+.logout {
+  color: #ced4da;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+  position: relative;
+  right: -18px;
+  bottom: -4px;
+  overflow: hidden;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity 0.45s;
+  -webkit-transition: opacity 0.35s;
+}
+
+.logoutButton {
+  text-decoration: none;
+  float: right;
+  /* padding: 12px;
+  margin: 15px; */
+  color: #ced4da;
+  width: 5rem;
+  background-color: rgb(88, 119, 67);
+  transition: width 0.35s;
+  -webkit-transition: width 0.35s;
+  overflow: hidden;
+  height: 100%;
+  border: none;
+}
+
+.logoutButton:hover {
+  width: 100%;
+}
+
+.logoutButton:hover .logout {
+  opacity: 0.9;
+}
+
+.logoutButton {
+  text-decoration: none;
+}
+
+.navbarDiv {
+  background-color: rgb(88, 119, 67);
 }

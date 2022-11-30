@@ -28,7 +28,7 @@ const CommentContainer = ({
   ));
 
   return (
-    <div>
+    <div className="commentsContainer">
       {commentCard}
       {user ? (
         <CommentForm className="commentForm"

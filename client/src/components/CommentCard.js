@@ -95,29 +95,35 @@ const CommentCard = ({
         <>
           <form onSubmit={handleSubmit}>
             <textarea
+              className="commentField"
               value={commentEdit}
               type="text"
               onChange={(e) => setCommentEdit(e.target.value)}
             />
             <button type="submit">Submit Edit</button>
+            <button onClick={() => setEditShown((editShown) => !editShown)}>
+              Cancel
+            </button>
           </form>
-          <button onClick={() => setEditShown((editShown) => !editShown)}>
-            Cancel
-          </button>
         </>
       ) : (
         <div className="singleCommentDiv">
+          <div className="commentPicDiv">
+            <Link  to={`/artists/${comment.user.id}`}>
+              <img
+                className="commentPic"
+                src={comment.user.profile_img}
+                alt={comment.user.username}
+              />
+            </Link>
+          </div>
           <div className="nameCommentDiv">
             <h4 className="commentName">
               <Link
+                className="nameLink"
                 style={{ textDecoration: "none" }}
                 to={`/artists/${comment.user.id}`}
               >
-                <img
-                  className="commentPic"
-                  src={comment.user.profile_img}
-                  alt={comment.user.username}
-                />{" "}
                 {comment.user.username}
               </Link>
             </h4>
@@ -126,10 +132,15 @@ const CommentCard = ({
           <div className="rightSideComment">
             {user.id === comment.user.id ? (
               <div className="editDeleteDiv">
-                <button onClick={() => setEditShown((editShown) => !editShown)}>
-                ✏️
+                <button
+                  className="editDeleteBtn"
+                  onClick={() => setEditShown((editShown) => !editShown)}
+                >
+                  ✏️
                 </button>
-                <button onClick={handleDeleteClick}>❌</button>{" "}
+                <button className="editDeleteBtn" onClick={handleDeleteClick}>
+                  ❌
+                </button>{" "}
               </div>
             ) : (
               <div className="editDeleteDiv" />

@@ -7,7 +7,8 @@ const ArtistContainer = ({artists, user}) => {
         return <ArtistCard key={artist.id} artist={artist} user={user} />
     })
   return (
-    <Container className="artist-container">{artistCard}</Container>
+    <div className="artist-container2">
+    <Container className="artist-container">{artistCard}</Container></div>
   )
 }
 
