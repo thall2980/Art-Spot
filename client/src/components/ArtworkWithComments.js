@@ -69,6 +69,7 @@ const ArtworkWithComments = ({
   //////////////////////////////////////end of like Artwork Functions////////////////////////////////
 
   return (
+    <div className="singlePageImgBackground">
     <Container>
       <div className="singlePageImgContainer">
         <h1 className="artistName">
@@ -120,6 +121,7 @@ const ArtworkWithComments = ({
         </Modal.Footer>
       </Modal>
     </Container>
+    </div>
   );
 };
 

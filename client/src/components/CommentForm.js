@@ -39,7 +39,7 @@ const CommentForm = ({ user, art, handleAddComment }) => {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
-        <button type="submit">Add Comment</button>
+        <button className="commentSubmitBtn" type="submit">Add Comment</button>
       </form>
     </>
   );

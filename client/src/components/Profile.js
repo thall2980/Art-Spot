@@ -76,7 +76,7 @@ const Profile = ({
   function handleDeleteProfileClick() {
     confirmAlert({
       title: "Delete Account",
-      message: "Are you sure to do this?",
+      message: "Are you sure you want to do this?",
       buttons: [
         {
           label: "Yes",
@@ -104,7 +104,7 @@ const Profile = ({
   }
 
   return (
-    <>
+    <div className="singlePageImgBackground">
       <h1>Welcome, {user.username}!</h1>
       <img src={user.profile_img} alt="profile" />
       <button onClick={handleDeleteProfileClick}>Delete Account</button>
@@ -131,7 +131,7 @@ const Profile = ({
 
       <h2 >Your Artwork</h2>
       <div className="yourArtContainer">{userArt}</div>
-    </>
+    </div>
   );
 };
 

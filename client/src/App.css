@@ -7,7 +7,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  background-color: rgb(146, 175, 128);
+  background-color: #cee0bc;
 }
 
 
@@ -15,8 +15,12 @@
 
 .artist-container2{
   background-image: url('https://images.unsplash.com/photo-1590157867535-b8435e08a93f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=784&q=80');
-  
+  background-size: 53rem 68rem;
+  background-repeat: repeat-x;
+  background-attachment: fixed;
 }
+
+
 
 .artwork-card-img {
   min-height: 25rem;
@@ -52,6 +56,15 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  background-color: #cee0bc;
+}
+
+.singlePageImgBackground{
+  background-image: url('https://www.creativefabrica.com/wp-content/uploads/2022/01/07/Black-White-Marble-texture-background-Graphics-23082854-1.jpg');
+  background-size: cover;
+  height: 100%;
+  min-height: 65rem;
+  padding-bottom: 1rem;
 }
 
 .artwork-card-text {
@@ -174,9 +187,9 @@
 
 .singleCommentDiv {
   display: flex;
-  background-color: rgb(134, 160, 116);
+  background-color: #cee0bc;
   border-radius: 5px;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .nameCommentDiv {
@@ -219,11 +232,15 @@
   border-radius: 50%;
   height: 4rem;
   width: 4rem;
-  margin-top:20%;
-  margin-left: 20%;
+  margin-top:13.5%;
+  margin-left: 15%;
 }
 
 .nameLink{
+  color: black;
+}
+
+.nameLink:hover{
   color: black;
 }
 
@@ -245,7 +262,11 @@
 .commentField {
   width: 100%;
   min-height: 5rem;
-  
+  margin-top: 1rem;
+}
+
+.commentSubmitBtn{
+  margin-bottom: 1rem;
 }
 
 .navbar {
@@ -275,6 +296,10 @@
   width: 0;
   background: #ced4da;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.underline-style:hover{
+  color: #ced4da;
 }
 
 .underline-style:hover::after {

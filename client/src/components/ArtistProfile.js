@@ -72,7 +72,7 @@ const ArtistProfile = ({
   }
 
   return (
-    <>
+    <div className="singlePageImgBackground">
       <div>
         <h1>{artist?.username}</h1>
         <img src={artist?.profile_img} alt="profile" />
@@ -116,7 +116,7 @@ const ArtistProfile = ({
           </NavLink>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 };
 
