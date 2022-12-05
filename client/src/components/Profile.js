@@ -5,6 +5,7 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Card from "react-bootstrap/Card"
 import { useHistory } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 import AddArtworkForm from "./AddArtworkForm";
 import EditInfoForm from "./EditInfoForm";
 
@@ -18,7 +19,9 @@ const Profile = ({
   handleUpdateUser,
 }) => {
   const history = useHistory();
-  const [defaultState, setDefaultState] = useState(true);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const userArt2 = artwork.filter((art) => art.user.id === user.id);
   const userArt = userArt2.map((artwork) => {
     return (
@@ -100,29 +103,27 @@ const Profile = ({
   }
 
   function handleStopEdit() {
-    setDefaultState((prev) => !prev)
+    setShow((prev) => !prev)
   }
 
   return (
+    <>
     <div className="singlePageImgBackground">
       <h1>Welcome, {user.username}!</h1>
       <img src={user.profile_img} alt="profile" />
       <button onClick={handleDeleteProfileClick}>Delete Account</button>
-      <button onClick={() => setDefaultState((defaultState) => !defaultState)}>
+      <button onClick={() => handleShow()}>
         Edit Account Info
       </button>
-      {defaultState ? (
-        <>
+
+        <div>
           <h2>Info</h2>
           <li>First Name: {user.first_name}</li>
           <li>Last Name: {user.last_name}</li>
           <li>Email: {user.email}</li>
           <h2>Bio</h2>
           <p>{user.bio}</p>{" "}
-        </>
-      ) : (
-        <EditInfoForm user={user} handleUpdateUser={handleUpdateUser} handleStopEdit={handleStopEdit}/>
-      )}
+        </div>
 
       <AddArtworkForm user={user} handleAddArt={handleAddArt} />
 
@@ -132,6 +133,14 @@ const Profile = ({
       <h2 >Your Artwork</h2>
       <div className="yourArtContainer">{userArt}</div>
     </div>
+
+<Modal show={show} onHide={handleClose}>
+<Modal.Header closeButton>
+  <Modal.Title>Edit Profile Info</Modal.Title>
+</Modal.Header>
+<Modal.Body><EditInfoForm user={user} handleUpdateUser={handleUpdateUser} handleStopEdit={handleStopEdit}/></Modal.Body>
+</Modal>
+</>
   );
 };
 

@@ -42,14 +42,14 @@ const EditInfoForm = ({ user, handleUpdateUser, handleStopEdit }) => {
     <>
       <form onSubmit={handleSubmit}>
         <div className="input">
-          <label className="input-label">Username</label>
+          <label className="input-labelEdit">Username</label>
           <br />
           <input
             value={username}
             type="text"
             placeholder="Username..."
             onChange={(e) => setUsername(e.target.value)}
-            className="input-field"
+            className="input-fieldEdit"
           ></input>
         </div>
         <div className="input">
@@ -60,56 +60,55 @@ const EditInfoForm = ({ user, handleUpdateUser, handleStopEdit }) => {
             type="text"
             placeholder="Email..."
             onChange={(e) => setEmail(e.target.value)}
-            className="input-field"
+            className="input-fieldEdit"
           ></input>
         </div>
         <div className="input">
-          <label className="input-label">First Name</label>
+          <label className="input-labelEdit">First Name</label>
           <br />
           <input
             value={firstName}
             type="text"
             placeholder="First Name..."
             onChange={(e) => setFirstName(e.target.value)}
-            className="input-field"
+            className="input-fieldEdit"
           ></input>
         </div>
         <div className="input">
-          <label className="input-label">Last Name</label>
+          <label className="input-labelEdit">Last Name</label>
           <br />
           <input
             value={lastName}
             type="text"
             placeholder="Last Name..."
             onChange={(e) => setLastName(e.target.value)}
-            className="input-field"
+            className="input-fieldEdit"
           ></input>
         </div>
         <div className="input">
-          <label className="input-label">Profile Image</label>
+          <label className="input-labelEdit">Profile Image</label>
           <br />
           <input
             value={profileImg}
             type="text"
             placeholder="Profile Image..."
             onChange={(e) => setProfileImg(e.target.value)}
-            className="input-field"
+            className="input-fieldEdit"
           ></input>
         </div>
         <div className="input">
-          <label className="input-label">Bio</label>
+          <label className="input-labelEdit">Bio</label>
           <br />
           <textarea
             value={bio}
             type="textarea"
             placeholder="Bio..."
             onChange={(e) => setBio(e.target.value)}
-            className="input-field"
+            className="input-fieldEdit2"
           ></textarea>
         </div>
         <button type="submit">Submit Edit</button>
       </form>
-      <button onClick={() => handleStopEdit()}>Cancel</button>
       {errors ? errors.map((e) => <div key={e}>{e[1]}</div>) : null}
     </>
   );

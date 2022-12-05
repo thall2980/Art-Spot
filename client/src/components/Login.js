@@ -32,14 +32,11 @@ const Login = ({ handleLogin }) => {
   }
 
   return (
-    <>
+    <div className="singlePageImgBackground">
+      <div className="signupCard">
       <form onSubmit={handleSubmit} className="login-form">
         <h2>Log in</h2>
-        <img
-          className="login-image"
-          src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29uY2VydHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-          alt="log in below"
-        />
+        <img className= "login-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeXJZ699js6Q4moAfAlzMb6XAqr9_3AB2KTA&usqp=CAU"></img>
         <div className="login-form">
           <div>
             <label>Username: </label>
@@ -66,7 +63,8 @@ const Login = ({ handleLogin }) => {
         </div>
       </form>
       {errors ? errors.map((e) => <div>{e[1]}</div>) : null}
-    </>
+    </div>
+    </div>
   );
 };
 

@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.app{
+  height: 100vh;
+}
+
 .artist-container {
   justify-content: center;
   display: flex;
@@ -10,17 +14,12 @@
   background-color: #cee0bc;
 }
 
-
-
-
-.artist-container2{
-  background-image: url('https://images.unsplash.com/photo-1590157867535-b8435e08a93f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=784&q=80');
+.artist-container2 {
+  background-image: url("https://images.unsplash.com/photo-1590157867535-b8435e08a93f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=784&q=80");
   background-size: 53rem 68rem;
   background-repeat: repeat-x;
   background-attachment: fixed;
 }
-
-
 
 .artwork-card-img {
   min-height: 25rem;
@@ -59,12 +58,24 @@
   background-color: #cee0bc;
 }
 
-.singlePageImgBackground{
-  background-image: url('https://www.creativefabrica.com/wp-content/uploads/2022/01/07/Black-White-Marble-texture-background-Graphics-23082854-1.jpg');
+.singlePageImgBackground {
+  background-image: url("https://www.creativefabrica.com/wp-content/uploads/2022/01/07/Black-White-Marble-texture-background-Graphics-23082854-1.jpg");
   background-size: cover;
   height: 100%;
   min-height: 65rem;
   padding-bottom: 1rem;
+  background-attachment: fixed;
+}
+
+.singlePageImgBackground2 {
+  background-image: url("https://img.freepik.com/free-vector/leaves-background-with-metallic-foil_79603-914.jpg?size=626&ext=jpg");
+  background-size: cover;
+  height: 100%;
+  min-height: 63rem;
+  padding-bottom: 1rem;
+  background-attachment: fixed;
+  text-align: center;
+  justify-content: center;
 }
 
 .artwork-card-text {
@@ -129,7 +140,6 @@
   width: 2.5rem;
   font-size: 1rem;
   padding-top: 1rem;
-
 }
 
 .yourArtContainer {
@@ -166,6 +176,38 @@
 
 @media (min-width: 768px) {
   .button-54 {
+    padding: 0.25em 0.75em;
+  }
+}
+
+.button-53 {
+  max-width: 15rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 13px;
+  /* padding: 0.25em 0.5em; */
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-53:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  .button-53 {
     padding: 0.25em 0.75em;
   }
 }
@@ -232,15 +274,15 @@
   border-radius: 50%;
   height: 4rem;
   width: 4rem;
-  margin-top:13.5%;
+  margin-top: 13.5%;
   margin-left: 15%;
 }
 
-.nameLink{
+.nameLink {
   color: black;
 }
 
-.nameLink:hover{
+.nameLink:hover {
   color: black;
 }
 
@@ -265,7 +307,7 @@
   margin-top: 1rem;
 }
 
-.commentSubmitBtn{
+.commentSubmitBtn {
   margin-bottom: 1rem;
 }
 
@@ -298,7 +340,7 @@
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
-.underline-style:hover{
+.underline-style:hover {
   color: #ced4da;
 }
 
@@ -367,4 +409,81 @@
 
 .navbarDiv {
   background-color: rgb(88, 119, 67);
+}
+
+.signupCard {
+  padding-top: 10%;
+  text-align: center;
+}
+
+.input-fieldEdit {
+  min-width: 100%;
+}
+
+.input-fieldEdit2 {
+  min-width: 100%;
+  min-height: 10rem;
+}
+
+.input-labelEdit{
+  font-weight: 600;
+}
+
+.login-img{
+  width: 35rem;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.input-field{
+  width: 30rem;
+  margin-bottom: 1.5rem;
+}
+
+.main-slide{
+  width: 50rem;
+  margin-left: 30.5%;
+}
+
+.carousel-slider {
+  max-height: 30rem;
+}
+
+.logo {
+  height: 20rem;
+}
+
+.artistProfileContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5rem;
+}
+
+.artistProfileBio {
+  padding-top: 5rem;
+  padding-right: 20rem;
+}
+
+.artistProfileInfo {
+  padding-top: 5rem;
+}
+
+.artistProfilePicContainer{
+  padding-left: 5rem;
+  padding-top: 5rem;
+}
+
+.centered{
+  justify-content: center;
+  text-align: center;
+}
+
+.followContainer {
+  display: flex;
+  padding-left: 5rem;
+}
+
+.followBtn {
+  padding-left: 3rem;
 }
