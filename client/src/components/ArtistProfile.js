@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 
 const ArtistProfile = ({
   artists,
@@ -76,75 +77,79 @@ const ArtistProfile = ({
   }
 
   return (
-    <div className="singlePageImgBackground">
-      <div className="artistProfileContainer">
-        <div className="artistProfilePicContainer">
-          <div className="centered">
-            <h1>{artist?.username}</h1>
+    <>{artist ? 
+      <div className="singlePageImgBackground">
+        <div className="artistProfileContainer">
+          <div className="artistProfilePicContainer">
             <div className="centered">
-              <img className="profilePic" src={artist?.profile_img} alt="profile" />
+              <h1>{artist?.username}</h1>
+              <div className="centered">
+                <img
+                  className="profilePic"
+                  src={artist?.profile_img}
+                  alt="profile"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="artistProfileInfo">
-          <div className="centered">
-            <h1>Info</h1>
+          <div className="artistProfileInfo">
+            <div className="centered">
+              <h1>Info</h1>
+            </div>
+            <br />
+            <h3>First Name: {artist?.first_name}</h3>
+            <h3>Last Name: {artist?.last_name}</h3>
+            <h3>Email: {artist?.email}</h3>
           </div>
-          <br />
-          <h3>First Name: {artist?.first_name}</h3>
-          <h3>Last Name: {artist?.last_name}</h3>
-          <h3>Email: {artist?.email}</h3>
-        </div>
-        <div className="artistProfileBio">
-          <div className="centered">
-            <h1>Bio</h1>
+          <div className="artistProfileBio">
+            <div className="centered">
+              <h1>Bio</h1>
+            </div>
+            <br />
+            <h5>{artist?.bio}</h5>
           </div>
-          <br />
-          <h5>{artist?.bio}</h5>
         </div>
-      </div>
 
-      <div className= "followContainer">
-        <h2>
-          {artist?.username}'s Artwork
-        </h2>{" "}
-        {user.id === artist?.id ? null : (
-          <div className="followBtn">
-            {userFollowing?.length ? (
-              <button className="button-54" onClick={handleUnfollowClick}>
-                Unfollow
-              </button>
-            ) : (
-              <button className="button-54" onClick={handleFollowClick}>
-                Follow
-              </button>
-            )}
-          </div>
-        )}{" "}
-      </div>
-      <div className="yourArtContainer">{userArt}</div>
+        <div className="followContainer">
+          <h2>{artist?.username}'s Artwork</h2>{" "}
+          {user.id === artist?.id ? null : (
+            <div className="followBtn">
+              {userFollowing?.length ? (
+                <button className="button-54" onClick={handleUnfollowClick}>
+                  Unfollow
+                </button>
+              ) : (
+                <button className="button-54" onClick={handleFollowClick}>
+                  Follow
+                </button>
+              )}
+            </div>
+          )}{" "}
+        </div>
+        <div className="yourArtContainer">{userArt}</div>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Looks like you're not logged in!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Please login or create an account to engage with the community.
-        </Modal.Body>
-        <Modal.Footer>
-          <NavLink to="/login">
-            <Button variant="secondary" onClick={handleClose}>
-              Login
-            </Button>
-          </NavLink>
-          <NavLink to="/signup">
-            <Button variant="primary" onClick={handleClose}>
-              Create account
-            </Button>
-          </NavLink>
-        </Modal.Footer>
-      </Modal>
-    </div>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Looks like you're not logged in!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Please login or create an account to engage with the community.
+          </Modal.Body>
+          <Modal.Footer>
+            <NavLink to="/login">
+              <Button variant="secondary" onClick={handleClose}>
+                Login
+              </Button>
+            </NavLink>
+            <NavLink to="/signup">
+              <Button variant="primary" onClick={handleClose}>
+                Create account
+              </Button>
+            </NavLink>
+          </Modal.Footer>
+        </Modal>
+      </div> : <ErrorPage /> }
+    </>
   );
 };
 

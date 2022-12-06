@@ -11,6 +11,7 @@ import ArtistContainer from "./ArtistContainer";
 import ArtworkContainer from "./ArtworkContainer";
 import ArtworkWithComments from "./ArtworkWithComments";
 import ArtistProfile from "./ArtistProfile";
+import ErrorPage from "./ErrorPage";
 
 function App() {
   const [artwork, setArtwork] = useState([]);
@@ -240,6 +241,9 @@ function App() {
               handleFollow={handleFollow}
               handleUnfollow={handleUnfollow}
             />
+          </Route>
+          <Route path="*">
+            <ErrorPage/>
           </Route>
         </Switch>
       </header>

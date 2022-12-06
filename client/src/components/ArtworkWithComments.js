@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container"
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { NavLink } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 
 const ArtworkWithComments = ({
   artwork,
@@ -69,6 +70,7 @@ const ArtworkWithComments = ({
   //////////////////////////////////////end of like Artwork Functions////////////////////////////////
 
   return (
+    <> {art ?
     <div className="singlePageImgBackground">
     <Container>
       <div className="singlePageImgContainer">
@@ -122,6 +124,8 @@ const ArtworkWithComments = ({
       </Modal>
     </Container>
     </div>
+    : <ErrorPage/> }
+    </>
   );
 };
 

@@ -550,3 +550,7 @@
   .submitArtworkBtn{
     width: 15px;
   }
+
+  .errorDiv {
+    padding-top: 10%;
+  }
