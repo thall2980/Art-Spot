@@ -35,8 +35,8 @@ const Login = ({ handleLogin }) => {
     <div className="singlePageImgBackground">
       <div className="signupCard">
       <form onSubmit={handleSubmit} className="login-form">
-        <h2>Log in</h2>
-        <img className= "login-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeXJZ699js6Q4moAfAlzMb6XAqr9_3AB2KTA&usqp=CAU"></img>
+        <h2>Login</h2>
+        <img className= "login-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeXJZ699js6Q4moAfAlzMb6XAqr9_3AB2KTA&usqp=CAU" alt="login"></img>
         <div className="login-form">
           <div>
             <label>Username: </label>

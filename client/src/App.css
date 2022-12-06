@@ -89,6 +89,8 @@
 
 .artistName {
   text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .artworkTitle {
@@ -462,7 +464,7 @@
 
 .artistProfileBio {
   padding-top: 5rem;
-  padding-right: 20rem;
+  padding-right: 15rem;
 }
 
 .artistProfileInfo {
@@ -487,3 +489,64 @@
 .followBtn {
   padding-left: 3rem;
 }
+
+.followedWithForm {
+  display: flex}
+
+  .followedArtistsContainer{
+    width: 80%;
+    padding-left: 5rem;
+  }
+
+  .addArtworkForm{
+    padding-right: 10rem;
+    text-align: center;
+
+  }
+
+  .userArtProfileContainer {
+    padding-top: 4rem;
+  }
+
+  .yourArtTitle {
+    padding-left: 5rem;
+  }
+
+  .profileButtonsContainer {
+    justify-content: center;
+  text-align: center;
+  padding-top: 2rem;
+  }
+
+  .profileButton{
+    padding-inline: 2rem;
+    margin-inline: 1rem;
+  }
+
+  .followedArtistTitle{
+    padding-bottom: 2rem;
+  }
+
+  .followedArtistPicName{
+    padding-inline: 1rem;
+  }
+
+  .followedArtistPic{
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .profilePic {
+    border-radius: 10rem;
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .uploadTitle {
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+
+  .submitArtworkBtn{
+    width: 15px;
+  }

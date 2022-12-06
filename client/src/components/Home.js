@@ -34,7 +34,7 @@ const Home = () => {
           </div>
         </Carousel>
       </div>
-      <h4>The one stop art spot.</h4>
+      <h4>Where artists connect.</h4>
     </div>
   );
 };

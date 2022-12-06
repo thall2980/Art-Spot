@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-import Card from "react-bootstrap/Card"
+import Card from "react-bootstrap/Card";
 import { useHistory } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import AddArtworkForm from "./AddArtworkForm";
@@ -27,11 +27,21 @@ const Profile = ({
     return (
       <Card className="artwork-card2" key={artwork.id}>
         <Link to={`/artwork/${artwork.id}`}>
-          <Card.Img className="artwork-card-img" src={artwork.image} alt={artwork.title} />
+          <Card.Img
+            className="artwork-card-img"
+            src={artwork.image}
+            alt={artwork.title}
+          />
         </Link>
         <h4 className="artistName">{artwork.title}</h4>
         <div className="deleteBtnContainer">
-        <button className="button-54" onClick={() => handleDeleteClick(artwork.id)}>Delete</button></div>
+          <button
+            className="button-54"
+            onClick={() => handleDeleteClick(artwork.id)}
+          >
+            Delete
+          </button>
+        </div>
       </Card>
     );
   });
@@ -40,14 +50,14 @@ const Profile = ({
   const following = follows.filter((follow) => follow.follower_id === user.id);
   const displayUserFollowing = following.map((follow) => {
     return (
-      <div key={follow.id}>
+      <div className="followedArtistPicName" key={follow.id}>
         <Link to={`/artists/${follow.following_id}`}>
-          <img 
+          <img className="followedArtistPic"
             src={follow.following.profile_img}
             alt={follow.following.username}
           />
         </Link>
-        <h3>{follow.following.username}</h3>
+        <h3 className="centered">{follow.following.username}</h3>
       </div>
     );
   });
@@ -103,44 +113,68 @@ const Profile = ({
   }
 
   function handleStopEdit() {
-    setShow((prev) => !prev)
+    setShow((prev) => !prev);
   }
 
   return (
     <>
-    <div className="singlePageImgBackground">
-      <h1>Welcome, {user.username}!</h1>
-      <img src={user.profile_img} alt="profile" />
-      <button onClick={handleDeleteProfileClick}>Delete Account</button>
-      <button onClick={() => handleShow()}>
-        Edit Account Info
-      </button>
-
-        <div>
-          <h2>Info</h2>
-          <li>First Name: {user.first_name}</li>
-          <li>Last Name: {user.last_name}</li>
-          <li>Email: {user.email}</li>
-          <h2>Bio</h2>
-          <p>{user.bio}</p>{" "}
+      <div className="singlePageImgBackground">
+        <div className="artistProfileContainer">
+          <div className="artistProfilePicContainer">
+            <div>
+              <div className="centered">
+              <h1>Welcome, {user.username}!</h1>
+                <img className="profilePic" src={user.profile_img} alt="profile" />
+              </div>
+            </div>
+            <div className="profileButtonsContainer">
+            <button className="profileButton" onClick={handleDeleteProfileClick}>Delete Account</button>
+            <button  className="profileButton" onClick={() => handleShow()}>Edit Account Info</button>
+            </div>
+          </div>
+          <div className="artistProfileInfo">
+            <div className="centered">
+              <h1>Info</h1>
+            </div>
+            <br />
+            <h3>First Name: {user.first_name}</h3>
+            <h3>Last Name: {user.last_name}</h3>
+            <h3>Email: {user.email}</h3>
+          </div>
+          <div className="artistProfileBio">
+            <div className="centered">
+              <h2>Bio</h2>
+            </div>
+            <br />
+            <h5>{user.bio}</h5>{" "}
+          </div>
         </div>
+        <div className="followedWithForm">
+          <div className="followedArtistsContainer">
+            <h2 className="followedArtistTitle">Followed Artists</h2>
+            <div className="yourArtContainer">{displayUserFollowing}</div>
+          </div>
+          <AddArtworkForm user={user} handleAddArt={handleAddArt} />
+        </div>
+        <div className="userArtProfileContainer">
+          <h2 className="yourArtTitle">Your Artwork</h2>
+          <div className="yourArtContainer">{userArt}</div>
+        </div>
+      </div>
 
-      <AddArtworkForm user={user} handleAddArt={handleAddArt} />
-
-      <h2>Followed Artists</h2>
-      <div className="yourArtContainer">{displayUserFollowing}</div>
-
-      <h2 >Your Artwork</h2>
-      <div className="yourArtContainer">{userArt}</div>
-    </div>
-
-<Modal show={show} onHide={handleClose}>
-<Modal.Header closeButton>
-  <Modal.Title>Edit Profile Info</Modal.Title>
-</Modal.Header>
-<Modal.Body><EditInfoForm user={user} handleUpdateUser={handleUpdateUser} handleStopEdit={handleStopEdit}/></Modal.Body>
-</Modal>
-</>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Profile Info</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <EditInfoForm
+            user={user}
+            handleUpdateUser={handleUpdateUser}
+            handleStopEdit={handleStopEdit}
+          />
+        </Modal.Body>
+      </Modal>
+    </>
   );
 };
 

@@ -79,10 +79,10 @@ const ArtistProfile = ({
     <div className="singlePageImgBackground">
       <div className="artistProfileContainer">
         <div className="artistProfilePicContainer">
-          <div>
+          <div className="centered">
             <h1>{artist?.username}</h1>
             <div className="centered">
-              <img src={artist?.profile_img} alt="profile" />
+              <img className="profilePic" src={artist?.profile_img} alt="profile" />
             </div>
           </div>
         </div>
