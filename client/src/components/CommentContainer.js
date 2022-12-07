@@ -27,9 +27,12 @@ const CommentContainer = ({
     />
   ));
 
+  console.log(commentCard)
+
+
   return (
     <div className="commentsContainer">
-      {commentCard}
+      {commentCard.sort((a, b) => a.key - b.key)}
       {user ? (
         <CommentForm className="commentForm"
           user={user}

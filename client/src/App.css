@@ -465,6 +465,7 @@
 .artistProfileBio {
   padding-top: 5rem;
   padding-right: 15rem;
+  max-width: 50rem;
 }
 
 .artistProfileInfo {
