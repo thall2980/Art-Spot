@@ -17,6 +17,8 @@ const Profile = ({
   handleAddArt,
   handleDeleteArt,
   handleUpdateUser,
+  logOut,
+  handleDeleteAcccount
 }) => {
   const history = useHistory();
   const [show, setShow] = useState(false);
@@ -52,7 +54,8 @@ const Profile = ({
     return (
       <div className="followedArtistPicName" key={follow.id}>
         <Link to={`/artists/${follow.following_id}`}>
-          <img className="followedArtistPic"
+          <img
+            className="followedArtistPic"
             src={follow.following.profile_img}
             alt={follow.following.username}
           />
@@ -100,9 +103,8 @@ const Profile = ({
             fetch("/logout", {
               method: "DELETE",
             });
-            history.push(`/`);
-            setUser(null);
-            window.location.reload();
+            handleDeleteAcccount(user?.id)
+            logOut()
           },
         },
         {
@@ -123,13 +125,24 @@ const Profile = ({
           <div className="artistProfilePicContainer">
             <div>
               <div className="centered">
-              <h1>Welcome, {user.username}!</h1>
-                <img className="profilePic" src={user.profile_img} alt="profile" />
+                <h1>Welcome, {user.username}!</h1>
+                <img
+                  className="profilePic"
+                  src={user.profile_img}
+                  alt="profile"
+                />
               </div>
             </div>
             <div className="profileButtonsContainer">
-            <button className="profileButton" onClick={handleDeleteProfileClick}>Delete Account</button>
-            <button  className="profileButton" onClick={() => handleShow()}>Edit Account Info</button>
+              <button
+                className="profileButton"
+                onClick={handleDeleteProfileClick}
+              >
+                Delete Account
+              </button>
+              <button className="profileButton" onClick={() => handleShow()}>
+                Edit Account Info
+              </button>
             </div>
           </div>
           <div className="artistProfileInfo">

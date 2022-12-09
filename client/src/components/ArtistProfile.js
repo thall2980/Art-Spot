@@ -89,6 +89,19 @@ const ArtistProfile = ({
                   src={artist?.profile_img}
                   alt="profile"
                 />
+                {user.id === artist?.id ? null : (
+            <div className="followBtn">
+              {userFollowing?.length ? (
+                <button className="button-54" onClick={handleUnfollowClick}>
+                  Unfollow
+                </button>
+              ) : (
+                <button className="button-54" onClick={handleFollowClick}>
+                  Follow
+                </button>
+              )}
+            </div>
+          )}{" "}
               </div>
             </div>
           </div>
@@ -112,19 +125,7 @@ const ArtistProfile = ({
 
         <div className="followContainer">
           <h2>{artist?.username}'s Artwork</h2>{" "}
-          {user.id === artist?.id ? null : (
-            <div className="followBtn">
-              {userFollowing?.length ? (
-                <button className="button-54" onClick={handleUnfollowClick}>
-                  Unfollow
-                </button>
-              ) : (
-                <button className="button-54" onClick={handleFollowClick}>
-                  Follow
-                </button>
-              )}
-            </div>
-          )}{" "}
+          
         </div>
         <div className="yourArtContainer">{userArt}</div>
 

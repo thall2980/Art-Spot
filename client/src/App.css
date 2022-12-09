@@ -65,6 +65,7 @@
   min-height: 65rem;
   padding-bottom: 1rem;
   background-attachment: fixed;
+  padding-top: 1rem;
 }
 
 .singlePageImgBackground2 {
@@ -147,6 +148,7 @@
 .yourArtContainer {
   display: flex;
   flex-wrap: wrap;
+  margin-left: 1rem;
 }
 
 /* button 54 */
@@ -459,22 +461,29 @@
 .artistProfileContainer {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
+  background-color: #cee0bc;
+  margin-inline: 5rem;
+  margin-bottom: 5rem;
+
+  margin-top: 5rem;
+  
 }
 
 .artistProfileBio {
-  padding-top: 5rem;
+  padding-top: 3rem;
   padding-right: 15rem;
   max-width: 50rem;
+
 }
 
 .artistProfileInfo {
-  padding-top: 5rem;
+  padding-top: 3rem;
 }
 
 .artistProfilePicContainer{
   padding-left: 5rem;
-  padding-top: 5rem;
+  padding-top: 1rem;
 }
 
 .centered{
@@ -489,6 +498,7 @@
 
 .followBtn {
   padding-left: 3rem;
+  padding-top: 2rem;
 }
 
 .followedWithForm {

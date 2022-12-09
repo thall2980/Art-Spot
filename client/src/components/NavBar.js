@@ -4,17 +4,7 @@ import Button from "react-bootstrap/Button";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-const NavBar = ({ user, setUser }) => {
-  const history = useHistory();
-
-  function logOut() {
-    fetch("/logout", {
-      method: "DELETE",
-    });
-    history.push(`/`);
-    setUser("");
-  }
-
+const NavBar = ({ user, logOut }) => {
   return (
     <Navbar className="navbarDiv">
       <NavLink className="underline-style" exact to="/">
@@ -44,7 +34,11 @@ const NavBar = ({ user, setUser }) => {
       {user ? (
         <div className="navigation">
           <button className="logoutButton" onClick={logOut}>
-            <img className="logoutPic" src={user.profile_img} alt={user.username}/>
+            <img
+              className="logoutPic"
+              src={user.profile_img}
+              alt={user.username}
+            />
             <div class="logout">LOGOUT</div>
           </button>
         </div>

@@ -63,6 +63,18 @@ function App() {
     setUser(addUser);
   }
 
+  function logOut() {
+    fetch("/logout", {
+      method: "DELETE",
+    });
+    history.push(`/`);
+    setUser("");
+  }
+
+  function handleDeleteAccount(id) {
+    setArtists((artists) => artists.filter((artist) => artist.id !== id))
+  }
+
   function handleUpdateUser(update) {
     setUser(update)
   }
@@ -187,7 +199,7 @@ function App() {
   return (
     <>
       <header>
-        <NavBar user={user} setUser={setUser} />
+        <NavBar user={user} setUser={setUser} logOut={logOut} />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -200,6 +212,8 @@ function App() {
               handleAddArt={handleAddArt}
               handleDeleteArt={handleDeleteArt}
               handleUpdateUser={handleUpdateUser}
+              logOut={logOut}
+              handleDeleteAcccount={handleDeleteAccount}
             />
           </Route>
           <Route path="/login">
