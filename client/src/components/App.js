@@ -204,7 +204,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/profile">
+          <Route exact path="/profile">
             <Profile
               user={user}
               artwork={artwork}
@@ -216,10 +216,10 @@ function App() {
               handleDeleteAcccount={handleDeleteAccount}
             />
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <Login handleLogin={handleLogin} />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <Signup handleLogin={handleLogin} handleAddUser={handleAddUser} />
           </Route>
           <Route exact path="/artists">
